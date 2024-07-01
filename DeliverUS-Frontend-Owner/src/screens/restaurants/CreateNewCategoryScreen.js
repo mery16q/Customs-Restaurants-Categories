@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Pressable, StyleSheet, View } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import * as yup from 'yup'
-import { createCategory } from '../../api/RestaurantEndpoints'
+import { createNewCategory } from '../../api/RestaurantEndpoints'
 import InputItem from '../../components/InputItem'
 import TextRegular from '../../components/TextRegular'
 import * as GlobalStyles from '../../styles/GlobalStyles'
@@ -21,12 +21,12 @@ export default function CreateRestaurantCategory ({ navigation, route }) {
       .required('Name is required')
   })
 
-  const createNewCategory = async (values) => {
+  const createNewCategor = async (values) => {
     setBackendErrors([])
     try {
-      await createCategory(values)
+      await createNewCategory(values)
       showMessage({
-        message: `Restaurant ${createNewCategory.name} succesfully created`,
+        message: `Restaurant ${createNewCategor.name} succesfully created`,
         type: 'success',
         style: GlobalStyles.flashStyle,
         titleStyle: GlobalStyles.flashTextStyle
@@ -42,7 +42,7 @@ export default function CreateRestaurantCategory ({ navigation, route }) {
     <Formik
       validationSchema={validationSchema}
       initialValues={initialRestaurantValues}
-      onSubmit={createNewCategory}>
+      onSubmit={createNewCategor}>
       {({ handleSubmit }) => (
           <View style={{ alignItems: 'center' }}>
             <View style={{ width: '60%' }}>
